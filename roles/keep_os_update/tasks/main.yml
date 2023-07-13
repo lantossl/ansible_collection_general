@@ -1,0 +1,8 @@
+---
+# tasks file for keep_os_update
+- name: Update cache and upgrade packages
+  import_tasks: updatePackagesAPT.yml
+  when: ansible_pkg_mgr == 'apt'
+
+- name: Check if reboot reboot required by a package and schedule the restart
+  import_tasks: rebootIfNeeded.yml

@@ -1,0 +1,36 @@
+- name: Check if reboot is required
+  stat:
+    path: /var/run/reboot-required
+  register: reboot_required
+  ignore_errors: true
+  tags:
+    - checks
+    - reboot_required
+
+- name: Gather packages requiring reboot
+  shell: cat /var/run/reboot-required.pkgs
+  register: reboot_packages
+  ignore_errors: true
+  changed_when: false
+  when: reboot_required.stat.exists
+  tags: 
+    - checks
+    - reboot_packages
+
+- name: Display packages requiring reboot
+  debug:
+    msg: "Packages requiring reboot: {{ reboot_packages.stdout }}"
+  when: reboot_packages|succeeded
+  tags: 
+    - checks
+    - reboot_packages
+
+
+- name: Warn users about impending reboot
+  command: shutdown -r 05:00 "System will be rebooted at 5:00 AM. Please save your work and log out."
+  async: 0
+  poll: 0
+  become: true
+  when: reboot_required.stat.exists
+  tags:
+    - schedule

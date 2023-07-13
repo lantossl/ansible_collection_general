@@ -1,0 +1,5 @@
+---
+- hosts: test_host
+  remote_user: root
+  roles:
+    - keep_os_update
