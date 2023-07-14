@@ -1,0 +1,15 @@
+- name: Run the equivalent of "dnf update" as a separate step
+  dnf:
+    name: '*'
+    state: latest
+  tags:
+    - dnf
+    - update_packages
+
+- name: Update all packages to their latest version
+  dnf:
+    name: '*'
+    state: latest
+  tags:
+    - dnf
+    - upgrade_all

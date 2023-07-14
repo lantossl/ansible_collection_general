@@ -1,2 +1,3 @@
 ---
 # defaults file for keep_os_update
+reboot_schedule_time: "05:00"

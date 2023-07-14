@@ -19,15 +19,15 @@
 
 - name: Display packages requiring reboot
   debug:
-    msg: "Packages requiring reboot: {{ reboot_packages.stdout }}"
-  when: reboot_packages|succeeded
-  tags: 
+    msg: "Packages requiring reboot: {{ reboot_packages.stdout | default('') }}"
+  when: reboot_packages.stdout is defined and reboot_packages.stdout | default('') != ''
+  ignore_errors: true
+  tags:
     - checks
     - reboot_packages
 
-
-- name: Warn users about impending reboot
-  command: shutdown -r 05:00 "System will be rebooted at 5:00 AM. Please save your work and log out."
+- name: Schedule and warn users about impending reboot
+  command: shutdown -r {{ reboot_schedule_time }} "System will be rebooted at {{ reboot_schedule_time }}. Please save your work and log out."
   async: 0
   poll: 0
   become: true
