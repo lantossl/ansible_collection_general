@@ -6,4 +6,4 @@ This collection contains roles for the generally needed system operating purpose
 
 | Role| Description| compatibility |
 |---|---|---|
-| keep_os_update| Role for keeping Linux systems up to date | with the following package managers: apt, yum, dnf |
+| [keep_os_update](roles/keep_os_update/README.md) | Role for keeping Linux systems up to date | with the following package managers: apt, yum, dnf |
