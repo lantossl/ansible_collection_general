@@ -1,7 +1,6 @@
 ---
 - hosts: test_hosts
   #remote_user: root
-  gather_facts: true
   become: yes
   roles:
     - keep_os_update

@@ -1,5 +1,5 @@
 - name: Run the equivalent of "yum update" as a separate step
-  ansible.builtin.yum:
+  yum:
     name: '*'
     state: latest
   tags:

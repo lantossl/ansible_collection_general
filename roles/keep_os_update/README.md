@@ -1,6 +1,13 @@
 # keep_os_update
 
-A role for keeping Linux operating systems up to date
+A role for keeping Linux operating systems up to date.
+
+What does this role makes for you? 
+
+- It keeps your package manager's cache up to date.
+- It is upgrades your installed packages at the most recent version.
+- It is follows the system requirements for a reboot and schedule a restart at the time you want.
+- It is warns the user for the forthcoming restart.
 
 ## Requirements
 
@@ -16,7 +23,7 @@ A description of the settable variables for this role should go here, including 
 
 ## Dependencies
 
-This role doesn't have any role dependencies.
+This role doesn't have any dependencies.
 
 A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
@@ -33,15 +40,33 @@ Including an example of how to use your role (for instance, with variables passe
   roles:
     - keep_os_update
 ```
+### Inventory file for a test
+
+```
+[test_hosts]
+ubuntu ansible_host=192.168.10.204
+centos8 ansible_host=192.168.10.201 ansible_user=root
+```
 
 ## License
 
 GPL
 
+## Compatibility
+
+This rule is tested for the following operating systems:
+- Ubuntu 22.04
+- Centos 8
+
+This rule is compatible with the following package managers:
+- APT
+- YUM
+- DNF
+
 ## Author Information
 
-## The role's maintainer:
+### The role's maintainer:
 
 Slimbarszki Lantos (lantos.sl@itvagyunk.info)
 
-with any issues, please address me at the repository's [Github Issues](https://github.com/lantossl/ansible_collection_general/issues) page:
+You can report any issues at the repository's [Github Issues](https://github.com/lantossl/ansible_collection_general/issues) page.
